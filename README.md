@@ -1,21 +1,19 @@
 # Project 3: Spots
 
-### Overview  
+## Summary
 
-* Intro  
-* Figma  
-* Images  
-  
-**Intro**
-  
-This project is made so all the elements are displayed correctly on popular screen sizes. We recommend investing more time in completing this project, since it's more difficult than previous ones.  
-  
-**Figma**  
-  
-* [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
-  
-**Images**  
-  
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster. 
-  
-Good luck and have fun!
+Spots is a social media application in which users can upload photos and like other users' photos. Users can add their name, a short bio, and an avatar image.
+
+## Technologies and Techniques
+
+Markup was written using HTML5, and styles were written using CSS3 based on the design provided on Figma, a collaborative design tool. CSS Grid, CSS Flexbox, and media queries were used to create a responsive site with columnns that adjust based on screen size.
+
+## Plans for Improvement
+
+Currently, the site is serves as a semi-interactive template for the application. The buttons have hover states, but clicking them doesn't execute anything (one can't actually create a new post). Additionally, the site lacks social functions; there isn't an option to follow or search for other users. The implementation of these features would create a fully functional.
+
+## Page Preview
+
+https://j6barajas.github.io/se_project_spots/
+
+![Screenshot of Spots application](./images/demos/spots-demo.png)
