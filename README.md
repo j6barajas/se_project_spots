@@ -17,3 +17,5 @@ Currently, the site is serves as a semi-interactive template for the application
 https://j6barajas.github.io/se_project_spots/
 
 ![Screenshot of Spots application](./images/demos/spots-demo.png)
+
+Link to demo video: https://drive.google.com/file/d/1pBFjInZCZX5r58YLCk12cFAxyqWS1krD/view?usp=sharing
