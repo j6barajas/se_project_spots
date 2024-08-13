@@ -1,0 +1,132 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__container {
+  max-width: 730px;
+  padding: 32px 50px;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal__title {
+  margin-top: 4px;
+  margin-bottom: 36px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.modal__close-button {
+  position: absolute;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  top: 32px;
+  right: 50px;
+  background-image: url(../images/close_icon.svg);
+  background-position: center;
+  background-size: cover;
+  border: none;
+  background-color: #fff;
+  transition: background-image 1s linear;
+}
+
+.modal__close-button:hover {
+  background-image: url(../images/close_button_dark.svg);
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+  opacity: 0.7;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.modal__input {
+  width: 606px;
+  height: 20px;
+  padding: 16px 12px;
+  margin-bottom: 32px;
+  border-radius: 8px;
+  border-width: 1px;
+  border-color: rgba(33, 33, 33, 0.4);
+  border-style: solid;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  transition: border-color 1s linear;
+}
+
+.modal__input:hover {
+  border-color: rgba(33, 33, 33, 1);
+  cursor: pointer;
+}
+
+.modal__submit-button {
+  width: 156px;
+  height: 52px;
+  color: #fcf5e5;
+  background-color: black;
+  border-radius: 8px;
+  border: none;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+}
+
+@media screen and (max-width: 750px) {
+  .modal__container {
+    max-width: 300px;
+    height: 336px;
+    padding: 12px;
+  }
+
+  .modal__title {
+    margin-top: 10px;
+    margin-bottom: 32px;
+    font-size: 20px;
+  }
+
+  .modal__close-button {
+    top: 12px;
+    right: 12px;
+  }
+
+  .modal__input {
+    width: 252px;
+    height: 16px;
+    margin-bottom: 24px;
+    font-size: 16px;
+  }
+
+  .modal__submit-button {
+    width: 276px;
+    height: 52px;
+  }
+}
