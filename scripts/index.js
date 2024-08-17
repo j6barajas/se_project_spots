@@ -27,13 +27,51 @@ const initialCards = [
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile");
-
-profileEditButton.addEventListener("click", function () {
-  editProfileModal.classList.add("modal_opened");
-});
-
 const modalCloseButton = document.querySelector(".modal__close-button");
+const profileFormElement = document.querySelector(".modal__form");
+const nameInput = document.querySelector("#name-input");
+const jobInput = document.querySelector("#description-input");
+const profileNameElement = document.querySelector(".profile__name");
+const profileJobElement = document.querySelector(".profile__description");
+const cardTemplate = document.querySelector("#card-template");
+const cardsList = document.querySelector(".cards__list");
 
-modalCloseButton.addEventListener("click", function () {
+function getCardTemplate(data) {
+  const cardElement = cardTemplate.content
+    .querySelector(".card")
+    .cloneNode(true);
+  const cardNameElement = cardElement.querySelector(".card__title");
+  const cardImageElement = cardElement.querySelector(".card__image");
+  cardNameElement.textContent = data.name;
+  cardImageElement.src = data.link;
+  cardImageElement.alt = data.name;
+
+  return cardElement;
+}
+
+function openModal() {
+  nameInput.value = profileNameElement.textContent;
+  jobInput.value = profileJobElement.textContent;
+  editProfileModal.classList.add("modal_opened");
+}
+
+function closeModal() {
   editProfileModal.classList.remove("modal_opened");
-});
+}
+
+profileEditButton.addEventListener("click", openModal);
+modalCloseButton.addEventListener("click", closeModal);
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileNameElement.textContent = nameInput.value;
+  profileJobElement.textContent = jobInput.value;
+  closeModal();
+}
+
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+
+for (let i = 0; i < initialCards.length; i++) {
+  const cardFill = getCardTemplate(initialCards[i]);
+  cardsList.prepend(cardFill);
+}
