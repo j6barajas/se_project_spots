@@ -23,18 +23,34 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
+  {
+    name: "Golden Gate bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  },
 ];
 
 const profileEditButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile");
-const modalCloseButton = document.querySelector(".modal__close-button");
-const profileFormElement = document.querySelector(".modal__form");
-const nameInput = document.querySelector("#name-input");
-const jobInput = document.querySelector("#description-input");
+const editCloseButton = editProfileModal.querySelector(".modal__close-button");
+const profileFormElement = editProfileModal.querySelector(".modal__form");
+const nameInput = editProfileModal.querySelector("#name-input");
+const jobInput = editProfileModal.querySelector("#description-input");
 const profileNameElement = document.querySelector(".profile__name");
 const profileJobElement = document.querySelector(".profile__description");
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
+const newPostModal = document.querySelector("#new-post");
+const newPostButton = document.querySelector(".profile__post-button");
+const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
+const newPostForm = newPostModal.querySelector(".modal__form");
+const linkInput = newPostModal.querySelector("#link-input");
+const captionInput = newPostModal.querySelector("#caption-input");
+const previewModal = document.querySelector("#preview-modal");
+const previewImage = previewModal.querySelector(".modal__image");
+const previewCaption = previewModal.querySelector(".modal__image-caption");
+const previewCloseButton = previewModal.querySelector(
+  ".modal__close-button_type_preview"
+);
 
 function getCardTemplate(data) {
   const cardElement = cardTemplate.content
@@ -42,6 +58,24 @@ function getCardTemplate(data) {
     .cloneNode(true);
   const cardNameElement = cardElement.querySelector(".card__title");
   const cardImageElement = cardElement.querySelector(".card__image");
+  const cardLikeButton = cardElement.querySelector(".card__like-button");
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
+
+  cardLikeButton.addEventListener("click", () => {
+    cardLikeButton.classList.toggle("card__like-button_clicked");
+  });
+
+  cardDeleteButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
+
+  cardImageElement.addEventListener("click", () => {
+    openModal(previewModal);
+    previewImage.src = data.link;
+    previewImage.alt = cardImageElement.alt;
+    previewCaption.textContent = data.name;
+  });
+
   cardNameElement.textContent = data.name;
   cardImageElement.src = data.link;
   cardImageElement.alt = data.name;
@@ -49,29 +83,55 @@ function getCardTemplate(data) {
   return cardElement;
 }
 
-function openModal() {
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+profileEditButton.addEventListener("click", () => {
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileJobElement.textContent;
-  editProfileModal.classList.add("modal_opened");
-}
+  openModal(editProfileModal);
+});
 
-function closeModal() {
-  editProfileModal.classList.remove("modal_opened");
-}
+newPostButton.addEventListener("click", () => {
+  openModal(newPostModal);
+});
 
-profileEditButton.addEventListener("click", openModal);
-modalCloseButton.addEventListener("click", closeModal);
+editCloseButton.addEventListener("click", () => {
+  closeModal(editProfileModal);
+});
+
+newPostCloseButton.addEventListener("click", () => {
+  closeModal(newPostModal);
+});
+
+previewCloseButton.addEventListener("click", () => {
+  closeModal(previewModal);
+});
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = nameInput.value;
   profileJobElement.textContent = jobInput.value;
-  closeModal();
+  closeModal(editProfileModal);
+}
+
+function handleNewPostSubmit(evt) {
+  evt.preventDefault();
+  const inputValues = { name: captionInput.value, link: linkInput.value };
+  const cardFill = getCardTemplate(inputValues);
+  cardsList.append(cardFill);
+  closeModal(newPostModal);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+newPostForm.addEventListener("submit", handleNewPostSubmit);
 
-for (let i = 0; i < initialCards.length; i++) {
-  const cardFill = getCardTemplate(initialCards[i]);
+initialCards.forEach((item) => {
+  const cardFill = getCardTemplate(item);
   cardsList.prepend(cardFill);
-}
+});

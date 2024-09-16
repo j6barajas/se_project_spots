@@ -45,6 +45,7 @@
             <template id="card-template">
               <li class="card">
                 <img src="" alt="" class="card__image" />
+                <button type="button" class="card__delete-button"></button>
                 <div class="card__content">
                   <h2 class="card__title"></h2>
                   <button type="button" class="card__like-button"></button>
@@ -80,6 +81,41 @@
             />
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
+        </div>
+      </div>
+      <div class="modal" id="new-post">
+        <div class="modal__container">
+          <h2 class="modal__title">New Post</h2>
+          <button type="submit" class="modal__close-button"></button>
+          <form name="new-post" class="modal__form">
+            <label for="link-input" class="modal__label">Image link</label>
+            <input
+              id="link-input"
+              type="url"
+              class="modal__input"
+              placeholder="Paste a link to the picture"
+            />
+            <label for="caption-input" class="modal__label">Caption</label>
+            <input
+              id="caption-input"
+              type="text"
+              class="modal__input"
+              placeholder="Type your caption"
+            />
+            <button type="submit" class="modal__submit-button">Save</button>
+          </form>
+        </div>
+      </div>
+      <div class="modal" id="preview-modal">
+        <div class="modal__container modal__container_type_preview">
+          <div class="modal__flex-container">
+            <img src="" alt="" class="modal__image" />
+            <button
+              type="submit"
+              class="modal__close-button modal__close-button_type_preview"
+            ></button>
+          </div>
+          <p class="modal__image-caption"></p>
         </div>
       </div>
     </div>
