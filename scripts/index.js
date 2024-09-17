@@ -123,8 +123,9 @@ function handleProfileFormSubmit(evt) {
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
   const inputValues = { name: captionInput.value, link: linkInput.value };
+  evt.target.reset();
   const cardFill = getCardTemplate(inputValues);
-  cardsList.append(cardFill);
+  cardsList.prepend(cardFill);
   closeModal(newPostModal);
 }
 

@@ -191,3 +191,9 @@
     height: 52px;
   }
 }
+
+@media screen and (max-width: 375px) {
+  .modal__image {
+    min-width: 288px;
+  }
+}
