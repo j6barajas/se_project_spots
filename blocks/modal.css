@@ -133,6 +133,11 @@
   transition: border-color 1s linear;
 }
 
+.modal__input_type_error {
+  border-color: rgba(255, 0, 0, 0.6);
+  margin-bottom: 0px;
+}
+
 .modal__input:hover {
   border-color: rgba(33, 33, 33, 1);
   cursor: pointer;
@@ -149,6 +154,21 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 1;
+}
+
+.modal__submit-button_type_disabled {
+  background-color: gray;
+}
+
+.modal__error {
+  color: rgba(255, 0, 0, 0.7);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  margin-top: 8px;
+  margin-bottom: 32px;
+  width: 606px;
 }
 
 @media screen and (max-width: 750px) {

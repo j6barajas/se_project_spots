@@ -65,20 +65,28 @@
           <form name="edit-profile" class="modal__form">
             <label for="name-input" class="modal__label">Name</label>
             <input
+              required
+              minlength="2"
+              maxlength="40"
               id="name-input"
               type="text"
               class="modal__input"
               placeholder="Type your name"
             />
+            <span id="name-input-error" class="modal__error"></span>
             <label for="description-input" class="modal__label"
               >Description</label
             >
             <input
+              required
+              minlength="2"
+              maxlength="200"
               id="description-input"
               type="text"
               class="modal__input"
               placeholder="Describe yourself"
             />
+            <span id="description-input-error" class="modal__error"></span>
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
         </div>
@@ -90,18 +98,22 @@
           <form name="new-post" class="modal__form">
             <label for="link-input" class="modal__label">Image link</label>
             <input
+              required
               id="link-input"
               type="url"
               class="modal__input"
               placeholder="Paste a link to the picture"
             />
+            <span id="link-input-error" class="modal__error"></span>
             <label for="caption-input" class="modal__label">Caption</label>
             <input
+              required
               id="caption-input"
               type="text"
               class="modal__input"
               placeholder="Type your caption"
             />
+            <span id="caption-input-error" class="modal__error"></span>
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
         </div>
@@ -120,5 +132,6 @@
       </div>
     </div>
     <script defer src="./scripts/index.js"></script>
+    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
