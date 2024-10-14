@@ -130,7 +130,6 @@ profileEditButton.addEventListener("click", () => {
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileJobElement.textContent;
   openModal(editProfileModal);
-  hideInputError(editProfileModal, inputElement, config);
 });
 
 newPostButton.addEventListener("click", () => {
