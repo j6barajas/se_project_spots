@@ -29,6 +29,15 @@ const initialCards = [
   },
 ];
 
+const config = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_enabled",
+};
+
 const profileEditButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile");
 const editCloseButton = editProfileModal.querySelector(".modal__close-button");
@@ -87,6 +96,13 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
   modal.addEventListener("mousedown", handleOverlayClose);
   document.addEventListener("keydown", handleEscKey);
+  const inputElements = Array.from(
+    modal.querySelectorAll(config.inputSelector)
+  );
+  inputElements.forEach((inputElement) => {
+    console.log(`Hiding error for: ${inputElement.id}`);
+    hideInputError(modal, inputElement, config);
+  });
 }
 
 function closeModal(modal) {
@@ -114,6 +130,7 @@ profileEditButton.addEventListener("click", () => {
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileJobElement.textContent;
   openModal(editProfileModal);
+  hideInputError(editProfileModal, inputElement, config);
 });
 
 newPostButton.addEventListener("click", () => {
@@ -146,6 +163,8 @@ function handleNewPostSubmit(evt) {
   const cardFill = getCardTemplate(inputValues);
   cardsList.prepend(cardFill);
   closeModal(newPostModal);
+  const newPostSubmitButton = document.querySelector("#new-post-submit");
+  disableButton(newPostSubmitButton, config);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
