@@ -284,8 +284,8 @@ function handleNewPostSubmit(evt) {
   api
     .addNewCard({ name: captionInput.value, link: linkInput.value })
     .then((data) => {
-      const inputValues = { name: data.name, link: data.link };
-      const cardFill = getCardTemplate(inputValues);
+      // const inputValues = { data };
+      const cardFill = getCardTemplate(data);
       cardsList.prepend(cardFill);
       closeModal(newPostModal);
     })
