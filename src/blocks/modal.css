@@ -34,6 +34,11 @@
   max-width: fit-content;
 }
 
+.modal__container_type_delete {
+  max-width: 630px;
+  padding: 32px 20px;
+}
+
 .modal__flex-container {
   padding: 0;
   margin: 0;
@@ -59,6 +64,11 @@
   line-height: 1;
 }
 
+.modal__title_type_delete {
+  margin: 0px 20px 32px;
+  font-size: 24px;
+}
+
 .modal__image-caption {
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -72,6 +82,13 @@
   height: fit-content;
   margin-top: 8px;
   margin-bottom: 0px;
+}
+
+.modal__delete-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
 }
 
 .modal__close-button {
@@ -93,6 +110,13 @@
   background-image: url(../images/close_button_preview.svg);
   background-color: transparent;
   position: static;
+}
+
+.modal__close-button_type_delete {
+  background-image: url(../images/close_button_preview.svg);
+  background-color: transparent;
+  top: 0px;
+  right: -60px;
 }
 
 .modal__close-button:hover {
@@ -160,6 +184,28 @@
   background-color: gray;
 }
 
+.modal__submit-button_type_delete-confirm {
+  background-color: #ff6565;
+  color: #212121;
+  transition: 1s linear;
+}
+
+.modal__submit-button_type_delete-cancel {
+  border: 1px solid #212121;
+  background-color: white;
+  color: #212121;
+  transition: 1s linear;
+}
+
+.modal__submit-button_type_delete-confirm:hover {
+  background-color: #ff3333;
+}
+
+.modal__submit-button_type_delete-cancel:hover {
+  background-color: #212121;
+  color: white;
+}
+
 .modal__error {
   margin: 0px;
 }
@@ -180,6 +226,19 @@
     max-width: 300px;
     height: 336px;
     padding: 12px;
+  }
+
+  .modal__container_type_delete {
+    max-height: 208px;
+  }
+
+  .modal__container_type_edit-avatar {
+    max-height: 222px;
+  }
+
+  .modal__delete-buttons {
+    flex-direction: column;
+    align-items: center;
   }
 
   .modal__flex-container {
@@ -203,6 +262,11 @@
     right: 12px;
   }
 
+  .modal__close-button_type_delete {
+    top: -55px;
+    right: -5px;
+  }
+
   .modal__input {
     width: 252px;
     height: 16px;
@@ -212,6 +276,16 @@
 
   .modal__submit-button {
     width: 276px;
+    height: 52px;
+  }
+
+  .modal__submit-button_type_delete-cancel {
+    width: 156px;
+    height: 52px;
+  }
+
+  .modal__submit-button_type_delete-confirm {
+    width: 156px;
     height: 52px;
   }
 }
