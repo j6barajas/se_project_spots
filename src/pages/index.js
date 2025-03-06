@@ -83,8 +83,7 @@ api
       cardsList.prepend(cardFill);
     });
     const userInfo = me;
-    const profileAvatar = document.querySelector(".profile__avatar");
-    profileAvatar.src = userInfo["avatar"];
+    avatarImage.src = userInfo["avatar"];
     profileNameElement.textContent = userInfo["name"];
     profileJobElement.textContent = userInfo["about"];
   })
@@ -266,6 +265,7 @@ function handleProfileFormSubmit(evt) {
     .then((data) => {
       profileNameElement.textContent = data.name;
       profileJobElement.textContent = data.about;
+      closeModal(editProfileModal);
     })
     .catch((err) => {
       console.error(err);
@@ -273,8 +273,6 @@ function handleProfileFormSubmit(evt) {
     .finally(() => {
       submitButton.textContent = "Save";
     });
-
-  closeModal(editProfileModal);
 }
 
 function handleNewPostSubmit(evt) {
@@ -284,10 +282,11 @@ function handleNewPostSubmit(evt) {
   api
     .addNewCard({ name: captionInput.value, link: linkInput.value })
     .then((data) => {
-      // const inputValues = { data };
       const cardFill = getCardTemplate(data);
       cardsList.prepend(cardFill);
       closeModal(newPostModal);
+      evt.target.reset();
+      disableButton(newPostSubmitButton, config);
     })
     .catch((err) => {
       console.error(err);
@@ -295,8 +294,6 @@ function handleNewPostSubmit(evt) {
     .finally(() => {
       submitButton.textContent = "Save";
     });
-  evt.target.reset();
-  disableButton(newPostSubmitButton, config);
 }
 
 //Submission listeners
